@@ -1,11 +1,16 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
-int main(int argc, char **argv)
-{
-    for(int i = 2;i <= 100;i += 2)
-        cout << i << endl;
+int pivotIndex(int* nums, int numsSize) {
+    int totalSum = 0;
+    for (int i = 0; i < numsSize; i++) {
+        totalSum += nums[i];
+    }
     
-    return 0;
+    int leftSum = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (leftSum == totalSum - leftSum - nums[i]) {
+            return i;
+        }
+        leftSum += nums[i];
+    }
+    
+    return -1;
 }
